@@ -28,10 +28,9 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] rsl = new Item[items.length];
         int temp = 0;
-        for (int i = 0; i < items.length; i++) {
-            Item name = items[i];
-            if (name != null && key.equals(name.getName())) {
-                rsl[temp] = name;
+        for (Item item : items) {
+            if (item != null && key.equals(item.getName())) {
+                rsl[temp] = item;
                 temp++;
             }
         }
@@ -41,10 +40,9 @@ public class Tracker {
     public Item[] findAll() {
         Item[] rsl = new Item[items.length];
         int temp = 0;
-        for (int i = 0; i < items.length; i++) {
-            Item name = items[i];
-            if (name != null) {
-                rsl[temp] = name;
+        for (Item item : items) {
+            if (item != null) {
+                rsl[temp] = item;
                 temp++;
             }
         }
