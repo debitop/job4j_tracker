@@ -64,6 +64,6 @@ public class Tracker {
             items[size - 1] = null;
             size--;
         }
-        return index != -1;
+        return rsl;
     }
 }
