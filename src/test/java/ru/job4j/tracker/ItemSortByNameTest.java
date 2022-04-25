@@ -40,7 +40,4 @@ public class ItemSortByNameTest {
         }
         assertTrue(rsl);
     }
-
-
-
 }
