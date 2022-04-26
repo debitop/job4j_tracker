@@ -24,6 +24,6 @@ public class ItemSortByNameTest {
         List<Item> items = Arrays.asList(new Item("one"), new Item("two"), new Item("five"));
         Collections.sort(items, new ItemDescByName());
         List<Item> expected = Arrays.asList(new Item("two"), new Item("one"), new Item("five"));
-        assertEquals(items, expected);
+        assertEquals(expected, items);
     }
 }
