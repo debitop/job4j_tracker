@@ -1,6 +1,7 @@
 package ru.job4j.collection;
 
 import org.junit.Test;
+
 import java.util.Comparator;
 
 import static org.hamcrest.Matchers.greaterThan;
@@ -17,6 +18,7 @@ public class JobTest {
         );
         assertThat(rsl, lessThan(0));
     }
+
     @Test
     public void whenComparatorDescByNameAndDescPriority() {
         Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
@@ -26,6 +28,7 @@ public class JobTest {
         );
         assertThat(rsl, greaterThan(0));
     }
+
     @Test
     public void whenComparatorAscByName() {
         Comparator<Job> cmpNamePriority = new JobAscByName();
@@ -35,6 +38,7 @@ public class JobTest {
         );
         assertThat(rsl, greaterThan(0));
     }
+
     @Test
     public void whenComparatorDescByName() {
         Comparator<Job> cmpNamePriority = new JobDescByName();
@@ -45,7 +49,7 @@ public class JobTest {
         assertThat(rsl, lessThan(0));
     }
 
-@Test
+    @Test
     public void whenComparatorAscByPriority() {
         Comparator<Job> cmpNamePriority = new JobAscByPriority();
         int rsl = cmpNamePriority.compare(
@@ -55,7 +59,7 @@ public class JobTest {
         assertThat(rsl, lessThan(0));
     }
 
-@Test
+    @Test
     public void whenComparatorDescByPriority() {
         Comparator<Job> cmpNamePriority = new JobDescByPriority();
         int rsl = cmpNamePriority.compare(
