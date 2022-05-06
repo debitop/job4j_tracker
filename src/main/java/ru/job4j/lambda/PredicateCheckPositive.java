@@ -5,8 +5,6 @@ import java.util.function.Predicate;
 public class PredicateCheckPositive {
 
     public static boolean check(int num) {
-//        Predicate<Integer> pred = s -> s > 0;
-//        return check(pred, num);
         return check(s -> s > 0, num);
     }
 
