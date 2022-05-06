@@ -11,7 +11,6 @@ public class FunctionalInterfaces {
         Map<Integer, String> map = new HashMap<>();
         BiConsumer<Integer, String> biCon = map::put;
         biCon.accept(1, "one");
-        biCon.accept(1, "one");
         biCon.accept(2, "two");
         biCon.accept(3, "three");
         biCon.accept(4, "four");
@@ -19,30 +18,21 @@ public class FunctionalInterfaces {
         biCon.accept(6, "six");
         biCon.accept(7, "seven");
 
-        //      BiPredicate<Integer, String> biPred = ...;
+        BiPredicate<Integer, String> biPred = (s, i) -> s % 2 == 0 || i.length() == 4;
         for (Integer i : map.keySet()) {
-            /*
-                Замените проверку в if() на использование BiPredicate, он объявлен выше, требуется его реализовать.
-             */
-            if (i % 2 == 0 || map.get(i).length() == 4) {
+            if (biPred.test(i, map.get(i))) {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
-        /*
-            Заменить создание ArrayList из значений Map на Supplier, объявлен ниже, требуется его реализовать.
-         */
-   //     Supplier<List<String>> sup = ...;
-        List<String> strings = new ArrayList<>(map.values());
 
-   //     Consumer<String> con = ...;
-  //      Function<String, String> func = ...;
-        for (String s : strings) {
-            /*
-                Заменить вывод строк на применение Consumer
-                Заменить преобразование строк к строкам в верхнем регистре с помощью Function
-                Необходимое объявлено выше, требуется их реализовать.
-            */
-            System.out.println(s.toUpperCase());
+        Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
+        List<String> strings = sup.get();
+
+        Consumer<String> con = (s) -> System.out.println(s);
+        Function<String, String> func = s -> s.toUpperCase();
+        for (
+                String s : strings) {
+            con.accept(func.apply(s));
         }
     }
 }
