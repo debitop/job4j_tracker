@@ -5,8 +5,9 @@ import java.util.function.Predicate;
 public class PredicateCheckEven {
 
     public static boolean check(int num) {
-        Predicate<Integer> pred = s -> s % 2 == 0;
-        return check(pred, num);
+//        Predicate<Integer> pred = s -> s % 2 == 0;
+//        return check(pred, num);
+        return check(s -> s % 2 == 0, num);
     }
 
     private static boolean check(Predicate<Integer> predicate, int num) {
