@@ -5,13 +5,13 @@ import java.util.function.Supplier;
 public class ScopeInside {
     public static void main(String[] args) {
         int[] number = {1, 2, 3};
-        int total = 0;
+        final int[] total = {0};
         for (int num : number) {
-            total += add(
-                    () -> num
+            total[0] = add(
+                    () -> (total[0] + num)
             );
         }
-        System.out.println(total);
+        System.out.println(total[0]);
     }
 
     private static Integer add(Supplier<Integer> calc) {
