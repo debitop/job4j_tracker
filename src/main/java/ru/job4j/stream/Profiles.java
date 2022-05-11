@@ -7,7 +7,7 @@ public class Profiles {
 
     public static List<Address> collect(List<Profile> profiles) {
         return profiles.stream()
-                .map(a -> a.getAddress())
+                .map(Profile::getAddress)
                 .collect(Collectors.toList());
     }
 }
