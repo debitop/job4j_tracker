@@ -63,10 +63,10 @@ public class BankService {
      */
     public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<User> user = findByPassport(passport);
-        return user.map(value -> users.get(value)
+        return user.flatMap(value -> users.get(value)
                 .stream()
                 .filter(s -> s.getRequisite().equals(requisite))
-                .findFirst()).orElse(null);
+                .findFirst());
     }
 
     /**
@@ -81,13 +81,13 @@ public class BankService {
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-        Account srcAcc = findByRequisite(srcPassport, srcRequisite).get();
-        Account destAcc = findByRequisite(destPassport, destRequisite).get();
-        if (srcAcc.getBalance() < amount) {
-            return false;
+        Optional<Account> srcAcc = findByRequisite(srcPassport, srcRequisite);
+        Optional<Account> destAcc = findByRequisite(destPassport, destRequisite);
+        if (srcAcc.isPresent() && destAcc.isPresent() && srcAcc.get().getBalance() >= amount) {
+            destAcc.get().setBalance(destAcc.get().getBalance() + amount);
+            srcAcc.get().setBalance(srcAcc.get().getBalance() - amount);
+            return true;
         }
-        destAcc.setBalance(destAcc.getBalance() + amount);
-        srcAcc.setBalance(srcAcc.getBalance() - amount);
-        return true;
+        return false;
     }
 }
