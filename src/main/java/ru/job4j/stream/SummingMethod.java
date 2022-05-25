@@ -62,6 +62,8 @@ public class SummingMethod {
         return users.stream()
                 .collect(Collectors
                         .groupingBy(User::getName, Collectors.summingInt(
-                                n -> n.getBills().stream().mapToInt(Bill::getBalance).sum())));
+                                n -> n.getBills()
+                                        .stream()
+                                        .mapToInt(Bill::getBalance).sum())));
     }
 }
