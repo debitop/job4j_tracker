@@ -6,6 +6,14 @@ public class Tuple {
     private String name;
     private double score;
 
+    public String getName() {
+        return name;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
     public Tuple(String name, double score) {
         this.name = name;
         this.score = score;
